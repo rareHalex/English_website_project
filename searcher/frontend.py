@@ -3,12 +3,13 @@ from flask import render_template
 from searcher import training_tasks, find_content
 import data_download
 import sqlite3
+
 app = Flask(__name__, static_folder='static')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/main', methods=['POST', 'GET'])
-
-
 def main():
     if request.method == 'POST':
         word = request.form['title']
@@ -42,3 +43,5 @@ def task():
 if __name__ == '__main__':
     app.run()
     data_download.con.close()
+    
+    
